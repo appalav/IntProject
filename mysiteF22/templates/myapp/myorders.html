@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+{%  block myhdg %}
+    Hello {{ user }}
+{% endblock %}
+{%  block body_block %}
+    {% if msg %}
+        <p> {{ msg }}</p>
+    {% else %}
+        <h2> User first name: {{ firstname }}</h2>
+        <h2> User last name: {{ lastname }}</h2>
+        <h1> Ordered Items </h1>
+        <ul>
+            {% for order in order_list %}
+                <li> {{ order }} </li>
+            {% endfor %}
+        </ul>
+        <h1> Interested Items</h1>
+        <ul>
+            {% for interest in interested_in %}
+                <li> {{ interest }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <li class="hbar1"><a href="{% url 'myapp:index' %}place_order">Click here to place an order</a></li>
+{% endblock %}

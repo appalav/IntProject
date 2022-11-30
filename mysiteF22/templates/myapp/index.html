@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    {% if last_login_flag == True %}
+        <p>Last Login @{{ last_login }}</p>
+    {% else %}
+        {{ last_login }}
+    {% endif %}
+{% if cat_list %}
+    <h2>List of Categories</h2>
+    <ol>
+        {% for cat in cat_list %}
+            <li>
+                <a href="/myapp/detail/{{ cat.pk }}">{{ cat.name }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <strong>There are no available categories!</strong>
+{% endif %}
+{%  if prod_list %}
+    <h2>List of Products</h2>
+    <ol>
+        {% for prod in prod_list %}
+            <li> {{ prod.name}} </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <strong>There are no available products!</strong>
+{% endif %}
+{% endblock %}
